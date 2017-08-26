@@ -1,8 +1,6 @@
-.sidenav__list-item, .sidenav__list--child-item {
-  border-bottom: 1px solid rgba(0, 0, 0, .06);
+.sidenav__list-item {
   text-align: -webkit-match-parent;
   .sidenav__list-item--anchor {
-    color: rgba(0,0,0,.54);
     box-sizing: border-box;
     display: block;
     font-size: 14px;
@@ -16,12 +14,6 @@
     transition-delay: initial;
     padding: 0 16px;
     position: relative;
-    font-family: Roboto, Helvetica Neue Light, Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif;
-
-    &:hover {
-      background: #fafafa;
-      color: #3f51b5;
-    }
 
     &.sidenav__list-item--active {
       background: #fafafa;

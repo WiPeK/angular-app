@@ -1,5 +1,6 @@
 @import '~@angular/material/theming';
 @import "app/shared/layout/toolbar/toolbar.component.theme";
+@import "app/shared/layout/side-nav/side-nav.component.theme";
 
 @include mat-core();
 
@@ -12,4 +13,5 @@ $theme: mat-light-theme($primary, $accent, $warn);
 
 @include angular-material-theme($theme);
 @include toolbar-theme($theme);
+@include side-nav-theme($theme);
 
