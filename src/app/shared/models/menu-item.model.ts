@@ -1,5 +1,5 @@
 export class MenuItem {
-  url: string;
   name: string;
+  url?: string;
   subItems?: MenuItem[];
 }

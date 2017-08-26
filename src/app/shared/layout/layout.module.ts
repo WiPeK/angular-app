@@ -7,6 +7,8 @@ import {SideNavComponent} from './side-nav/side-nav.component';
 import {ToolbarComponent} from './toolbar/toolbar.component';
 import {RouterModule} from '@angular/router';
 import {SideNavService} from './side-nav/side-nav.service';
+import { SideNavListComponent } from './side-nav/side-nav-list/side-nav-list.component';
+import { SideNavItemComponent } from './side-nav/side-nav-list/side-nav-item/side-nav-item.component';
 
 @NgModule({
   imports: [
@@ -20,7 +22,9 @@ import {SideNavService} from './side-nav/side-nav.service';
     SideNavComponent,
     MenuComponent,
     ToolbarComponent,
-    MenuComponent
+    MenuComponent,
+    SideNavListComponent,
+    SideNavItemComponent
   ],
   providers: [SideNavService],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]

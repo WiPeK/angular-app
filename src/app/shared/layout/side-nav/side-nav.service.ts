@@ -30,7 +30,7 @@ export class SideNavService {
             name: 'Lorem ipsum'
           },
           {
-            url: '/e',
+            url: '/',
             name: 'Lorem ipsum'
           },
           {
@@ -57,7 +57,21 @@ export class SideNavService {
           },
           {
             url: '/k',
-            name: 'Lorem ipsum'
+            name: 'Lorem ipsum',
+            subItems: [
+              {
+                url: '/i',
+                name: 'Lorem ipsum'
+              },
+              {
+                url: '/j',
+                name: 'Lorem ipsum'
+              },
+              {
+                url: '/k',
+                name: 'Lorem ipsum'
+              }
+            ]
           }
         ]
       }
