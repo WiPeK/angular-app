@@ -1,0 +1,7 @@
+<div class="filter"></div>
+<video autoplay loop poster="{{ posterUrl }}">
+  <ng-container *ngFor="let videoUrl of videoUrls">
+    <source src="{{ videoUrl.url }}" type="{{videoUrl.type}}"/>
+    Your browser does not support the video tag. I suggest you upgrade your browser.
+  </ng-container>
+</video>

@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Observable} from 'rxjs/Observable';
-import {MenuItem} from '../../models/menu-item.model';
+import {MenuItem} from '../../shared/models/menu-item.model';
 import {SideNavService} from './side-nav.service';
 
 

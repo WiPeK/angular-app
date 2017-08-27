@@ -1,10 +1,11 @@
 <md-sidenav-container class="sidenav-fab-container">
-  <md-sidenav #sidenav mode="side" opened="true">
+  <md-sidenav #sidenav mode="over" opened="false">
     <app-side-nav-list *ngIf="menuItems | async" [menuItems]="menuItems | async"></app-side-nav-list>
   </md-sidenav>
 
-  <div class="example-scrolling-content">
-    <app-toolbar (toggleMenu)="sidenav.toggle()"></app-toolbar>
+  <div>
+    <app-toolbar (toggleMenu)="sidenav.open()"></app-toolbar>
+    <router-outlet></router-outlet>
   </div>
 
 </md-sidenav-container>
