@@ -3,6 +3,7 @@
      [routerLink]="!hasChildren ? [menuItem.url] : []"
      routerLinkActive="{{!hasChildren ? 'sidenav__list-item--active': 'active'}}"
      class="sidenav__list-item--anchor">
+    <i class="material-icons">{{menuItem.icon}}</i>
     {{menuItem.name}}
     <i *ngIf="hasChildren"
        [@iconChange]="isCollapsed"

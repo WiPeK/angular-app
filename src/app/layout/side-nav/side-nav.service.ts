@@ -11,23 +11,28 @@ export class SideNavService {
     this._menuItems = [
       {
         url: '/',
-        name: 'STRONA GŁÓWNA'
+        name: 'STRONA GŁÓWNA',
+        icon: 'home'
       },
       {
         url: '/offers',
-        name: 'OFERTY'
+        name: 'OFERTY',
+        icon: 'local_offer'
       },
       {
         url: '/cv',
-        name: 'CV'
+        name: 'CV',
+        icon: 'account_box'
       },
       {
         url: '',
         name: 'Lorem ipsum',
+        icon: 'dashboard',
         subItems: [
           {
             url: '/d',
-            name: 'Lorem ipsum'
+            name: 'Lorem ipsum',
+            icon: 'room'
           },
           {
             url: '/',
@@ -41,11 +46,13 @@ export class SideNavService {
       },
       {
         url: '/about',
-        name: 'O MNIE'
+        name: 'O MNIE',
+        icon: 'speaker_notes'
       },
       {
         url: '/contact',
-        name: 'KONTAKT'
+        name: 'KONTAKT',
+        icon: 'contacts'
       }
     ];
   }

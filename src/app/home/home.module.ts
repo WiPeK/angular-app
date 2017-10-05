@@ -3,7 +3,7 @@ import {CommonModule} from '@angular/common';
 import {HomeComponent} from './home.component';
 import {HomeService} from './home.service';
 import {HomeRoutingModule} from './home.routing';
-import {VideoContainerComponent} from '../shared/components/video-container/video-container.component';
+import { WelcomeComponent } from './welcome/welcome.component';
 
 @NgModule({
   imports: [
@@ -11,7 +11,7 @@ import {VideoContainerComponent} from '../shared/components/video-container/vide
     HomeRoutingModule
   ],
   exports: [HomeComponent],
-  declarations: [HomeComponent, VideoContainerComponent],
+  declarations: [HomeComponent, WelcomeComponent],
   providers: [HomeService]
 })
 export class HomeModule {
