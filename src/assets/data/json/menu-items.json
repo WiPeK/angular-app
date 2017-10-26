@@ -1,0 +1,46 @@
+[
+  {
+    "url": "/",
+    "name": "STRONA GŁÓWNA",
+    "icon": "home"
+  },
+  {
+    "url": "/offers",
+    "name": "OFERTY",
+    "icon": "local_offer"
+  },
+  {
+    "url": "/cv",
+    "name": "CV",
+    "icon": "account_box"
+  },
+  {
+    "url": "",
+    "name": "Lorem ipsum",
+    "icon": "dashboard",
+    "subItems": [
+      {
+        "url": "/d",
+        "name": "Lorem ipsum"
+      },
+      {
+        "url": "/",
+        "name": "Lorem ipsum"
+      },
+      {
+        "url": "/f",
+        "name": "Lorem ipsum"
+      }
+    ]
+  },
+  {
+    "url": "/about",
+    "name": "O BANKU",
+    "icon": "speaker_notes"
+  },
+  {
+    "url": "/contact",
+    "name": "KONTAKT",
+    "icon": "contacts"
+  }
+]

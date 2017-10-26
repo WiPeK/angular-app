@@ -3,7 +3,7 @@ import {CommonModule} from '@angular/common';
 import {HomeComponent} from './home.component';
 import {HomeService} from './home.service';
 import {HomeRoutingModule} from './home.routing';
-import { WelcomeComponent } from './welcome/welcome.component';
+import {WelcomeComponent} from './welcome/welcome.component';
 
 @NgModule({
   imports: [

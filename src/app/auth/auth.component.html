@@ -1,0 +1,27 @@
+<form class="form--login" [formGroup]="form" (ngSubmit)="login()">
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="Login" formControlName="login">
+    <mat-error *ngIf="form.controls.login.hasError('required')">
+      Login jest wymagany
+    </mat-error>
+    <mat-error *ngIf="form.controls.login.hasError('minlength')">
+      Login musi mieć minimum {{form.controls.login.errors.minlength.requiredLength}} znaków
+    </mat-error>
+    <mat-error *ngIf="form.controls.login.hasError('maxlength')">
+      Login może mieć maksymalnie {{form.controls.login.errors.maxlength.requiredLength}} znaków
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="Hasło" formControlName="password" type="password">
+    <mat-error *ngIf="form.controls.password.hasError('required')">
+      Login jest wymagany
+    </mat-error>
+    <mat-error *ngIf="form.controls.password.hasError('minlength')">
+      Hasło musi mieć minimum {{form.controls.password.errors.minlength.requiredLength}} znaków
+    </mat-error>
+    <mat-error *ngIf="form.controls.password.hasError('maxlength')">
+      Hasło może mieć maksymalnie {{form.controls.password.errors.maxlength.requiredLength}} znaków
+    </mat-error>
+  </mat-form-field>
+  <button type="submit" mat-raised-button color="accent">Zaloguj</button>
+</form>

@@ -9,6 +9,10 @@ import {HttpModule} from '@angular/http';
 import {RouterModule} from '@angular/router';
 import {LayoutModule} from './layout/layout.module';
 import {HomeModule} from './home/home.module';
+import { AuthComponent } from './auth/auth.component';
+import {AuthModule} from './auth/auth.module';
+import {ReactiveFormsModule} from '@angular/forms';
+import {AppRoutingModule} from './app.routing';
 
 @NgModule({
   declarations: [
@@ -18,22 +22,25 @@ import {HomeModule} from './home/home.module';
     BrowserModule,
     BrowserAnimationsModule,
     CommonModule,
+    ReactiveFormsModule,
     SharedModule,
     HttpModule,
-    // AppRoutingModule,
+    AppRoutingModule,
     RouterModule,
     LayoutModule,
-    HomeModule
+    HomeModule,
+    AuthModule
   ],
   exports: [
     BrowserModule,
     BrowserAnimationsModule,
+    ReactiveFormsModule,
     CommonModule,
     HttpModule,
     SharedModule,
     LayoutModule,
-    HomeModule
-    // AppRoutingModule
+    HomeModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
