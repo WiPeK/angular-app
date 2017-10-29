@@ -9,7 +9,7 @@ import {HttpModule} from '@angular/http';
 import {RouterModule} from '@angular/router';
 import {LayoutModule} from './layout/layout.module';
 import {HomeModule} from './home/home.module';
-import { AuthComponent } from './auth/auth.component';
+import {HttpClientModule} from '@angular/common/http';
 import {AuthModule} from './auth/auth.module';
 import {ReactiveFormsModule} from '@angular/forms';
 import {AppRoutingModule} from './app.routing';
@@ -29,7 +29,8 @@ import {AppRoutingModule} from './app.routing';
     RouterModule,
     LayoutModule,
     HomeModule,
-    AuthModule
+    AuthModule,
+    HttpClientModule
   ],
   exports: [
     BrowserModule,
