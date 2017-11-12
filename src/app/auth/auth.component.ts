@@ -17,12 +17,12 @@ export class AuthComponent {
 
   private createForm(): void {
     this.form = this.fb.group({
-      login: ['', Validators.compose([
+      login: ['wipekwipek', Validators.compose([
         Validators.required,
         Validators.minLength(8),
         Validators.maxLength(16)
       ])],
-      password: ['', Validators.compose([
+      password: ['12345678', Validators.compose([
         Validators.required,
         Validators.minLength(8),
         Validators.maxLength(16)

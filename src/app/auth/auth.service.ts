@@ -15,8 +15,8 @@ export class AuthService {
 
     const headers = new HttpHeaders().set('Content-Type', 'application/json');
 
-    this.http.post(API_URL + 'auth/login', userLoginAndPassword)
-      .subscribe((data) => console.log(data));
+    this.http.post(API_URL + 'auth/login', userLoginAndPassword, {headers: headers, observe: 'response'})
+      .subscribe((response) => console.log(response.headers));
 
     return status;
   }
