@@ -16,20 +16,16 @@
   },
   {
     "url": "",
-    "name": "Lorem ipsum",
-    "icon": "dashboard",
+    "name": "Przelewy",
+    "icon": "monetization on",
     "subItems": [
       {
-        "url": "/d",
-        "name": "Lorem ipsum"
+        "url": "/payments/domestic",
+        "name": "Przelew krajowy"
       },
       {
-        "url": "/",
-        "name": "Lorem ipsum"
-      },
-      {
-        "url": "/f",
-        "name": "Lorem ipsum"
+        "url": "/payments/foreign",
+        "name": "Przelew zagraniczny"
       }
     ]
   },

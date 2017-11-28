@@ -13,6 +13,7 @@ import {HttpClientModule} from '@angular/common/http';
 import {AuthModule} from './auth/auth.module';
 import {ReactiveFormsModule} from '@angular/forms';
 import {AppRoutingModule} from './app.routing';
+import {PaymentsModule} from './payments/payments.module';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import {AppRoutingModule} from './app.routing';
     LayoutModule,
     HomeModule,
     AuthModule,
-    HttpClientModule
+    HttpClientModule,
+    PaymentsModule
   ],
   exports: [
     BrowserModule,
@@ -41,7 +43,8 @@ import {AppRoutingModule} from './app.routing';
     SharedModule,
     LayoutModule,
     HomeModule,
-    AppRoutingModule
+    AppRoutingModule,
+    PaymentsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -31,7 +31,7 @@ import {
   MatTabsModule,
   MatToolbarModule,
   MatTooltipModule,
-  MatStepperModule,
+  MatStepperModule, MatFormFieldModule,
 } from '@angular/material';
 import {CdkTableModule} from '@angular/cdk/table';
 
@@ -67,7 +67,8 @@ import {CdkTableModule} from '@angular/cdk/table';
     MatTabsModule,
     MatToolbarModule,
     MatTooltipModule,
-    MatStepperModule
+    MatStepperModule,
+    MatFormFieldModule
   ],
   imports: [
     CommonModule,
@@ -102,7 +103,8 @@ import {CdkTableModule} from '@angular/cdk/table';
     MatTabsModule,
     MatToolbarModule,
     MatTooltipModule,
-    MatStepperModule
+    MatStepperModule,
+    MatFormFieldModule
   ],
   declarations: []
 })
