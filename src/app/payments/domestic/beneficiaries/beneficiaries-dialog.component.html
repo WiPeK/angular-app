@@ -7,25 +7,26 @@
   <div class="example-container mat-elevation-z8">
     <div class="example-header">
       <mat-form-field floatPlaceholder="never">
-        <input matInput #filter placeholder="Filter beneficiaries">
+        <input matInput #filter placeholder="Filtruj odbiorców">
       </mat-form-field>
     </div>
 
-    <mat-table #table [dataSource]="data">
+    <mat-table #table [dataSource]="data" matSort>
+      <!--account number column-->
       <ng-container matColumnDef="accoutNumber">
-        <mat-header-cell *matHeaderCellDef>Numer konta</mat-header-cell>
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Numer konta</mat-header-cell>
         <mat-cell *matCellDef="let row"> {{row.accountNumber}} </mat-cell>
       </ng-container>
 
-      <!-- Progress Column -->
+      <!-- beneficiary name Column -->
       <ng-container matColumnDef="name">
-        <mat-header-cell *matHeaderCellDef>Dane</mat-header-cell>
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Dane</mat-header-cell>
         <mat-cell *matCellDef="let row"> {{row.name}} </mat-cell>
       </ng-container>
 
-      <!-- Name Column -->
+      <!-- Address Column -->
       <ng-container matColumnDef="address">
-        <mat-header-cell *matHeaderCellDef>Adres</mat-header-cell>
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Adres</mat-header-cell>
         <mat-cell *matCellDef="let row"> {{row.address}} </mat-cell>
       </ng-container>
 

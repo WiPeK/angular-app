@@ -7,7 +7,7 @@
         <small>{{account.currency}}</small>
       </mat-option>
     </mat-select>
-    <button mat-button *ngIf="form.controls.userAccount.value" matSuffix mat-icon-button aria-label="Clear" (click)="form.controls.userAccount.setValue('')">
+    <button mat-button *ngIf="form.controls.userAccount.value" matSuffix mat-icon-button aria-label="Clear" (click)="openDialog()">
       <mat-icon>close</mat-icon>
     </button>
     <mat-hint>Pole jest wymagane!</mat-hint>
