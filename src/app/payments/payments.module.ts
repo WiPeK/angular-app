@@ -7,7 +7,7 @@ import {BeneficiariesService} from './services/beneficiaries.service';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {SharedModule} from '../shared/shared.module';
 import {BrowserModule} from '@angular/platform-browser';
-import {PaymentTypesService} from './services/payment-types.service';
+import {TransferTypesService} from './services/transfer-types.service';
 import {BeneficiariesDialogComponent} from './domestic/beneficiaries/beneficiaries-dialog.component';
 
 @NgModule({
@@ -20,7 +20,7 @@ import {BeneficiariesDialogComponent} from './domestic/beneficiaries/beneficiari
     SharedModule
   ],
   declarations: [DomesticComponent, BeneficiariesDialogComponent],
-  providers: [AccountsService, BeneficiariesService, PaymentTypesService],
+  providers: [AccountsService, BeneficiariesService, TransferTypesService],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   entryComponents: [BeneficiariesDialogComponent]
 })

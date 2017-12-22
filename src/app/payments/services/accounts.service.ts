@@ -10,6 +10,6 @@ export class AccountsService {
   }
 
   getAll(userId: string): Observable<Account[]> {
-    return this.http.get(API_URL + 'accounts/users/' + userId);
+    return this.http.get(API_URL + 'accounts/customers/' + userId);
   }
 }

@@ -3,8 +3,8 @@
   <mat-form-field>
     <mat-select placeholder="Rachunek do pobrania kwoty przelewu" formControlName="userAccount">
       <mat-option *ngFor="let account of accounts$ | async" [value]="account">
-        <span>{{ account.accountNumber }}</span> |
-        <small>{{account.currency}}</small>
+        <span>{{ account.account.accountNumber }}</span> |
+        <small>{{account?.currency}}</small>
       </mat-option>
     </mat-select>
     <button mat-button *ngIf="form.controls.userAccount.value" matSuffix mat-icon-button aria-label="Clear" (click)="openDialog()">

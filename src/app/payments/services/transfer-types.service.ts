@@ -5,11 +5,11 @@ import {API_URL} from '../../app.consts';
 import {DictionaryItem} from '../../shared/models/distionary-item.model';
 
 @Injectable()
-export class PaymentTypesService {
+export class TransferTypesService {
   constructor(private http: HttpClient) {
   }
 
-  getDomesticPaymentTypes(): Observable<DictionaryItem[]> {
+  getDomesticTransferTypes(): Observable<DictionaryItem[]> {
     return this.http.get(API_URL + 'payments/types/domestic');
   }
 }

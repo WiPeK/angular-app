@@ -8,9 +8,9 @@ import {BeneficiariesService} from '../services/beneficiaries.service';
 import {moneyInAccountValidator} from '../../shared/validators/money-in-account.validator';
 import {StoreService} from '../../shared/store/store.service';
 import {MyErrorStateMatcher} from '../../shared/validators/error-matcher.validator';
-import {PaymentTypesService} from '../services/payment-types.service';
 import {MatDialog} from '@angular/material';
 import {BeneficiariesDialogComponent} from './beneficiaries/beneficiaries-dialog.component';
+import {TransferTypesService} from '../services/transfer-types.service';
 
 @Component({
   selector: 'app-domestic',
@@ -30,11 +30,11 @@ export class DomesticComponent {
               private accountService: AccountsService,
               private beneficiariesService: BeneficiariesService,
               private storeService: StoreService,
-              private paymentTypesService: PaymentTypesService,
+              private transferTypesService: TransferTypesService,
               private fb: FormBuilder) {
-    this.accounts$ = this.accountService.getAll(this.storeService.user.idUsers);
-    this.paymentTypes$ = this.paymentTypesService.getDomesticPaymentTypes();
-    this.beneficiaries$ = this.beneficiariesService.getAllDomesticBeneficiaries(this.storeService.user.idUsers);
+    this.accounts$ = this.accountService.getAll(this.storeService.user.id);
+    this.paymentTypes$ = this.transferTypesService.getDomesticTransferTypes();
+    this.beneficiaries$ = this.beneficiariesService.getAllDomesticBeneficiaries(this.storeService.user.id);
     this._createForm();
     this.matcher = new MyErrorStateMatcher();
   }

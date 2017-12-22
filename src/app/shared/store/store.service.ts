@@ -8,7 +8,7 @@ export class StoreService {
 
   get user(): User {
     this._user = {
-      id: '5a2c48b072938305fc481165',
+      id: '6075205366900CAAE050EDD4221D1C44',
       login: 'wipekwipek'
     };
     return this._user;
