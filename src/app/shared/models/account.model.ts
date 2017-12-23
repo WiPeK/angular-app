@@ -1,8 +1,10 @@
+import {Currency} from './currency.model';
+
 export interface Account {
-  idAccounts?: string;
+  id?: string;
   accountNumber?: string;
   balance?: number;
-  currency?: string;
+  currency?: Currency;
   name?: string;
   blockedAmount?: number;
 }
