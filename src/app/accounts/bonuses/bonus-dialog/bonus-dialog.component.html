@@ -1,0 +1,102 @@
+<mat-toolbar mat-dialog-title><span>Otrzymane bonusy dla konta <br> {{data.account.accountNumber}}</span></mat-toolbar>
+<div mat-dialog-content>
+  <div class="dialog-bonuses-row">
+    <div class="dialog-bonuses">
+      <mat-list>
+        <h3 mat-subheader>Zwrot pieniędzy na konto</h3>
+        <ng-container *ngIf="data.moneyBackBonus.granted">
+          <mat-list-item>
+            <h4 mat-line>Ilość logowań z aplikacji mobilnej:</h4>
+            <p mat-line>{{data.moneyBackBonus.mobileLoggingNumbers}}</p>
+          </mat-list-item>
+
+          <mat-list-item>
+            <h4 mat-line>Suma wpłat na konto:</h4>
+            <p mat-line>{{data.moneyBackBonus.sumPaymentToAccount}}</p>
+          </mat-list-item>
+
+          <mat-list-item>
+            <h4 mat-line>Ilość użyć blik:</h4>
+            <p mat-line>{{data.moneyBackBonus.blikUseNumbers}}</p>
+          </mat-list-item>
+
+          <mat-list-item>
+            <h4 mat-line>Otrzymany bonus:</h4>
+            <p mat-line>{{data.moneyBackBonus.grantedBonus}}</p>
+          </mat-list-item>
+        </ng-container>
+        <ng-container *ngIf="!data.moneyBackBonus.granted">
+          <mat-list-item>
+            <h4 mat-line>Bonus nie przyznany</h4>
+          </mat-list-item>
+        </ng-container>
+      </mat-list>
+    </div>
+    <div class="dialog-bonuses">
+      <mat-list>
+        <h3 mat-subheader>Saldo bonus</h3>
+        <ng-container *ngIf="data.saldoBonus.granted">
+          <mat-list-item>
+            <h4 mat-line>Otrzymany bonus:</h4>
+            <p mat-line>{{data.saldoBonus.grantedBonus}}</p>
+          </mat-list-item>
+        </ng-container>
+        <ng-container *ngIf="!data.saldoBonus.granted">
+          <mat-list-item>
+            <h4 mat-line>Bonus nie przyznany</h4>
+          </mat-list-item>
+        </ng-container>
+      </mat-list>
+    </div>
+  </div>
+
+  <div class="dialog-bonuses-row">
+    <div class="dialog-bonuses">
+      <mat-list>
+        <h3 mat-subheader>Bonus przelewów</h3>
+        <ng-container *ngIf="data.transactionsBonus.granted">
+          <mat-list-item>
+            <h4 mat-line>Darmowe przelewy:</h4>
+            <p mat-line>{{data.transactionsBonus.transactionBonuses[0].freePayments}}</p>
+          </mat-list-item>
+
+          <mat-list-item>
+            <h4 mat-line>Darmowe przelewy premium:</h4>
+            <p mat-line>{{data.transactionsBonus.transactionBonuses[0].freePremiumPayments}}</p>
+          </mat-list-item>
+
+          <mat-list-item>
+            <h4 mat-line>Darmowe tranzakcje <br> w bankomatach/wpłatomatach:</h4>
+            <p mat-line>{{data.transactionsBonus.transactionBonuses[0].freeAtmTransactions}}</p>
+          </mat-list-item>
+
+        </ng-container>
+        <ng-container *ngIf="!data.transactionsBonus.granted">
+          <mat-list-item>
+            <h4 mat-line>Bonus nie przyznany</h4>
+          </mat-list-item>
+        </ng-container>
+      </mat-list>
+    </div>
+    <div class="dialog-bonuses">
+      <mat-list>
+        <h3 mat-subheader>Bonus voucher</h3>
+        <ng-container *ngIf="data.voucherBonus.granted">
+          <mat-list-item>
+            <h4 mat-line>Przyznane vouchery:</h4>
+            <p mat-line>{{data.saldoBonus.grantedBonus}}</p>
+            <p mat-line *ngFor="let voucher of grantedVouchers">{{voucher.actualVoucher.name}} {{voucher.code}}</p>
+          </mat-list-item>
+        </ng-container>
+        <ng-container *ngIf="!data.voucherBonus.granted">
+          <mat-list-item>
+            <h4 mat-line>Bonus nie przyznany</h4>
+          </mat-list-item>
+        </ng-container>
+      </mat-list>
+    </div>
+  </div>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()" cdkFocusInitial>Zamknij</button>
+</div>

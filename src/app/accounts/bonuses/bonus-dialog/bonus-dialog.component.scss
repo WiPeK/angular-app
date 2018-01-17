@@ -1,0 +1,10 @@
+.dialog-bonuses-row {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  .dialog-bonuses {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+  }
+}

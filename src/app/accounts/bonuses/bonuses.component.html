@@ -1,0 +1,48 @@
+<div [hidden]="!isCreateButtonVisible" class="button-row">
+  <button class="create-bonus-btn" (click)="getCreatedBonuses()" mat-raised-button color="primary">Utwórz bonusy dla kont</button>
+</div>
+<mat-spinner *ngIf="isSpinnerVisible"></mat-spinner>
+<div class="example-container mat-elevation-z8" [hidden]="!isTableVisible">
+  <div class="example-header">
+    <mat-form-field>
+      <input matInput (keyup)="applyFilter($event.target.value.account)" placeholder="Filter">
+    </mat-form-field>
+  </div>
+
+  <mat-table #table [dataSource]="dataSource" matSort>
+
+    <ng-container matColumnDef="accountNumber">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Numer konta</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.account.accountNumber}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="balance">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Stan konta </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.account.balance}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="name">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Nazwa konta </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.account.name}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="type">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Typ konta </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.account.type}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="numberOfBonuses">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Ilość bonusów </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{countBonuses(element)}} </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;" (click)="openDialog(row)"></mat-row>
+  </mat-table>
+
+  <mat-paginator #paginator
+                 [pageSize]="10"
+                 [pageSizeOptions]="[5, 10, 20]">
+  </mat-paginator>
+</div>
+

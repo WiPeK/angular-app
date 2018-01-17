@@ -5,8 +5,8 @@
     "icon": "home"
   },
   {
-    "url": "/offers",
-    "name": "OFERTY",
+    "url": "/accounts/bonuses",
+    "name": "BONUSY DLA KONT",
     "icon": "local_offer"
   },
   {
@@ -17,7 +17,7 @@
   {
     "url": "",
     "name": "Przelewy",
-    "icon": "monetization on",
+    "icon": "style",
     "subItems": [
       {
         "url": "/payments/domestic",

@@ -14,6 +14,7 @@ import {AuthModule} from './auth/auth.module';
 import {ReactiveFormsModule} from '@angular/forms';
 import {AppRoutingModule} from './app.routing';
 import {PaymentsModule} from './payments/payments.module';
+import {AccountsModule} from './accounts/accounts.module';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import {PaymentsModule} from './payments/payments.module';
     HomeModule,
     AuthModule,
     HttpClientModule,
-    PaymentsModule
+    PaymentsModule,
+    AccountsModule
   ],
   exports: [
     BrowserModule,
@@ -44,7 +46,8 @@ import {PaymentsModule} from './payments/payments.module';
     LayoutModule,
     HomeModule,
     AppRoutingModule,
-    PaymentsModule
+    PaymentsModule,
+    AccountsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

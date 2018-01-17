@@ -7,4 +7,5 @@ export interface Account {
   currency?: Currency;
   name?: string;
   blockedAmount?: number;
+  lastMonthSaldo?: number;
 }
