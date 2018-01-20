@@ -1,124 +1,164 @@
-<form [formGroup]="form">
-  <h1>Przelew krajowy</h1>
-  <mat-form-field>
-    <mat-select placeholder="Rachunek do pobrania kwoty przelewu" formControlName="userAccount">
-      <mat-option *ngFor="let account of accounts$ | async" [value]="account">
-        <span>{{ account.account.accountNumber }}</span> |
-        <small>{{account.account?.currency?.code}}</small>
-      </mat-option>
-    </mat-select>
-    <button mat-button *ngIf="form.controls.userAccount.value" matSuffix mat-icon-button aria-label="Clear" (click)="openDialog()">
-      <mat-icon>close</mat-icon>
-    </button>
-    <mat-hint>Pole jest wymagane!</mat-hint>
-    <mat-error *ngIf="form.controls.userAccount.hasError('required')">
-      Rachunek źródłowy jest <strong>wymagany</strong>
-    </mat-error>
-  </mat-form-field>
+<mat-horizontal-stepper [linear]="true">
+  <mat-step [stepControl]="form">
+    <form *ngIf="!firstStepSubmited" [formGroup]="form">
+      <ng-template matStepLabel>Wypełnij dane przelewu</ng-template>
+      <form [formGroup]="form">
+        <h1>Przelew krajowy</h1>
+        <mat-form-field>
+          <mat-select placeholder="Rachunek do pobrania kwoty przelewu" formControlName="userAccount">
+            <mat-option *ngFor="let account of accounts$ | async" [value]="account">
+              <span>{{ account.account.accountNumber }}</span> |
+              <small>{{account.account?.currency?.code}}</small>
+            </mat-option>
+          </mat-select>
+          <button mat-button *ngIf="form.controls.userAccount.value" matSuffix mat-icon-button aria-label="Clear" (click)="form.controls.userAccount.setValue('')">
+            <mat-icon>close</mat-icon>
+          </button>
+          <mat-hint>Pole jest wymagane!</mat-hint>
+          <mat-error *ngIf="form.controls.userAccount.hasError('required')">
+            Rachunek źródłowy jest <strong>wymagany</strong>
+          </mat-error>
+        </mat-form-field>
 
-  <mat-form-field>
-    <input matInput placeholder="Dane odbiorcy" formControlName="beneficiary"
-           [errorStateMatcher]="matcher">
-    <button mat-button matSuffix mat-icon-button (click)="openDialog()">
-      <mat-icon>face</mat-icon>
-    </button>
-    <button mat-button *ngIf="form.controls.beneficiary.value" matSuffix mat-icon-button aria-label="Clear" (click)="form.controls.beneficiary.setValue('')">
-      <mat-icon>close</mat-icon>
-    </button>
-    <mat-hint>Pole jest wymagane!</mat-hint>
-    <mat-error *ngIf="form.controls.beneficiary.hasError('required')">
-      Dane odbiorcy są <strong>wymagane</strong>
-    </mat-error>
-  </mat-form-field>
+        <mat-form-field *ngIf="noBeneficiariesSelected">
+          <input matInput placeholder="Dane odbiorcy" formControlName="beneficiary"
+                 [errorStateMatcher]="matcher">
+          <button mat-button matSuffix mat-icon-button (click)="openDialog()">
+            <mat-icon>face</mat-icon>
+          </button>
+          <button mat-button *ngIf="form.controls.beneficiary.value" matSuffix mat-icon-button aria-label="Clear" (click)="form.controls.beneficiary.setValue('')">
+            <mat-icon>close</mat-icon>
+          </button>
+          <mat-hint>Pole jest wymagane!</mat-hint>
+          <mat-error *ngIf="form.controls.beneficiary.hasError('required')">
+            Dane odbiorcy są <strong>wymagane</strong>
+          </mat-error>
+        </mat-form-field>
 
-  <mat-form-field>
-    <input matInput placeholder="Numer rachunku odbiorcy" formControlName="beneficiaryAccount"
-           [errorStateMatcher]="matcher">
-    <button mat-button *ngIf="form.controls.beneficiaryAccount.value" matSuffix mat-icon-button aria-label="Clear" (click)="form.controls.beneficiaryAccount.setValue('')">
-      <mat-icon>close</mat-icon>
-    </button>
-    <mat-hint>Pole jest wymagane!</mat-hint>
-    <mat-error *ngIf="form.controls.beneficiaryAccount.hasError('required')">
-      Dane odbiorcy są <strong>wymagane</strong>
-    </mat-error>
-  </mat-form-field>
+        <app-selected-beneficiaries-list *ngIf="!noBeneficiariesSelected" [beneficiaries]="form.controls.beneficiary.value"></app-selected-beneficiaries-list>
+        <div class="button-row" *ngIf="!noBeneficiariesSelected"><button (click)="removeSelectedBeneficiaries()" mat-raised-button>Usuń wybranych odbiorców</button></div>
 
-  <mat-form-field>
+        <mat-form-field *ngIf="noBeneficiariesSelected">
+          <input matInput placeholder="Numer rachunku odbiorcy" formControlName="beneficiaryAccount"
+                 [errorStateMatcher]="matcher">
+          <button mat-button *ngIf="form.controls.beneficiaryAccount.value" matSuffix mat-icon-button aria-label="Clear" (click)="form.controls.beneficiaryAccount.setValue('')">
+            <mat-icon>close</mat-icon>
+          </button>
+          <mat-hint>Pole jest wymagane!</mat-hint>
+          <mat-error *ngIf="form.controls.beneficiaryAccount.hasError('required')">
+            Dane odbiorcy są <strong>wymagane</strong>
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field *ngIf="noBeneficiariesSelected">
     <textarea matInput placeholder="Adres (opcjonalny)" formControlName="address" matTextareaAutosize matAutosizeMinRows="2"
               matAutosizeMaxRows="5" [errorStateMatcher]="matcher"></textarea>
-    <button mat-button *ngIf="form.controls.address.value" matSuffix mat-icon-button aria-label="Clear" (click)="form.controls.address.setValue('')">
-      <mat-icon>close</mat-icon>
-    </button>
-  </mat-form-field>
+          <button mat-button *ngIf="form.controls.address.value" matSuffix mat-icon-button aria-label="Clear" (click)="form.controls.address.setValue('')">
+            <mat-icon>close</mat-icon>
+          </button>
+        </mat-form-field>
 
-  <hr>
+        <hr>
 
-  <div>Typ przelewu</div>
-  <mat-radio-group formControlName="type">
-    <mat-radio-button *ngFor="let paymentType of paymentTypes$ | async" [value]="paymentType">
-      {{paymentType.value}}
-    </mat-radio-button>
-    <mat-hint>Pole jest wymagane!</mat-hint>
-    <mat-error *ngIf="form.controls.type.hasError('required') && form.controls.type.touched">
-      Typ przelewu jest <strong>wymagany</strong>
-    </mat-error>
-  </mat-radio-group>
+        <div>Typ przelewu</div>
+        <mat-radio-group formControlName="type">
+          <mat-radio-button *ngFor="let paymentType of paymentTypes$ | async" [value]="paymentType">
+            {{paymentType.value}}
+          </mat-radio-button>
+          <mat-hint>Pole jest wymagane!</mat-hint>
+          <mat-error *ngIf="form.controls.type.hasError('required') && form.controls.type.touched">
+            Typ przelewu jest <strong>wymagany</strong>
+          </mat-error>
+        </mat-radio-group>
 
-  <mat-form-field>
-    <input matInput placeholder="Kwota przelewu" type="number" formControlName="amount"
-           [errorStateMatcher]="matcher">
-    <button mat-button *ngIf="form.controls.amount.value" matSuffix mat-icon-button aria-label="Clear" (click)="form.controls.amount.setValue('')">
-      <mat-icon>close</mat-icon>
-    </button>
-    <mat-hint>Pole jest wymagane!</mat-hint>
-    <mat-error *ngIf="form.controls.amount.hasError('required')">
-      Kwota przelewu jest <strong>wymagana</strong>
-    </mat-error>
-    <mat-error *ngIf="form.controls.amount.hasError('min')">
-      Kwota przelewu jest <strong>za mała</strong>
-    </mat-error>
-    <mat-error *ngIf="form.controls.amount.hasError('max')">
-      Kwota przelewu jest <strong>za duża</strong>
-    </mat-error>
-  </mat-form-field>
+        <mat-form-field>
+          <input matInput placeholder="Kwota przelewu" type="number" formControlName="amount"
+                 [errorStateMatcher]="matcher">
+          <button mat-button *ngIf="form.controls.amount.value" matSuffix mat-icon-button aria-label="Clear" (click)="form.controls.amount.setValue('')">
+            <mat-icon>close</mat-icon>
+          </button>
+          <mat-hint>Pole jest wymagane!</mat-hint>
+          <mat-error *ngIf="form.controls.amount.hasError('required')">
+            Kwota przelewu jest <strong>wymagana</strong>
+          </mat-error>
+          <mat-error *ngIf="form.controls.amount.hasError('min')">
+            Kwota przelewu jest <strong>za mała</strong>
+          </mat-error>
+          <mat-error *ngIf="form.controls.amount.hasError('max')">
+            Kwota przelewu jest <strong>za duża</strong>
+          </mat-error>
+        </mat-form-field>
 
-  <mat-form-field>
+        <mat-form-field>
     <textarea matInput placeholder="Tytuł przelewu" formControlName="title" matTextareaAutosize matAutosizeMinRows="2"
               matAutosizeMaxRows="5" [errorStateMatcher]="matcher"></textarea>
-    <button mat-button *ngIf="form.controls.title.value" matSuffix mat-icon-button aria-label="Clear" (click)="form.controls.title.setValue('')">
-      <mat-icon>close</mat-icon>
-    </button>
-    <mat-hint>Pole jest wymagane!</mat-hint>
-    <mat-error *ngIf="form.controls.title.hasError('required')">
-      Tytuł przelewu jest <strong>wymagany</strong>
-    </mat-error>
-  </mat-form-field>
+          <button mat-button *ngIf="form.controls.title.value" matSuffix mat-icon-button aria-label="Clear" (click)="form.controls.title.setValue('')">
+            <mat-icon>close</mat-icon>
+          </button>
+          <mat-hint>Pole jest wymagane!</mat-hint>
+          <mat-error *ngIf="form.controls.title.hasError('required')">
+            Tytuł przelewu jest <strong>wymagany</strong>
+          </mat-error>
+        </mat-form-field>
 
-  <mat-form-field>
-    <input matInput placeholder="Data przelewu" type="date" formControlName="date"
-           [errorStateMatcher]="matcher">
-    <button mat-button *ngIf="form.controls.date.value" matSuffix mat-icon-button aria-label="Clear" (click)="form.controls.date.setValue('')">
-      <mat-icon>close</mat-icon>
-    </button>
-    <mat-hint>Pole jest wymagane!</mat-hint>
-    <mat-error *ngIf="form.controls.date.hasError('required')">
-      Data przelewu jest <strong>wymagana</strong>
-    </mat-error>
-  </mat-form-field>
+        <mat-form-field>
+          <input matInput placeholder="Data przelewu" type="date" formControlName="date"
+                 [errorStateMatcher]="matcher">
+          <button mat-button *ngIf="form.controls.date.value" matSuffix mat-icon-button aria-label="Clear" (click)="form.controls.date.setValue('')">
+            <mat-icon>close</mat-icon>
+          </button>
+          <mat-hint>Pole jest wymagane!</mat-hint>
+          <mat-error *ngIf="form.controls.date.hasError('required')">
+            Data przelewu jest <strong>wymagana</strong>
+          </mat-error>
+        </mat-form-field>
 
-  <mat-checkbox formControlName="template">Zapisać jako przelew zdefiniowany</mat-checkbox>
+        <mat-checkbox formControlName="template">Zapisać jako przelew zdefiniowany</mat-checkbox>
 
-  <mat-form-field *ngIf="form.valid">
-    <input matInput placeholder="Token" type="number" formControlName="token"
-           [errorStateMatcher]="matcher">
-    <button mat-button *ngIf="form.controls.token.value" matSuffix mat-icon-button aria-label="Clear" (click)="form.controls.token.setValue('')">
-      <mat-icon>close</mat-icon>
-    </button>
-    <mat-hint>Pole jest wymagane!</mat-hint>
-    <mat-error *ngIf="form.controls.token.hasError('required')">      Token jest <strong>wymagany</strong>
-    </mat-error>
-  </mat-form-field>
+        <mat-checkbox formControlName="emailConfirm">Email z potwierdzeniem</mat-checkbox>
 
-  <button disabled="form.hasErrors" mat-raised-button color="primary" type="submit">Wykonaj przelew</button>
+        <mat-form-field *ngIf="form.controls.emailConfirm.value">
+          <input matInput placeholder="Email" type="email" formControlName="email"
+                 [errorStateMatcher]="matcher">
+          <button mat-button *ngIf="form.controls.email.value" matSuffix mat-icon-button aria-label="Clear" (click)="form.controls.email.setValue('')">
+            <mat-icon>close</mat-icon>
+          </button>
+          <mat-hint>Podaj prawidłowy adres email</mat-hint>
+          <mat-error *ngIf="form.controls.email.hasError('email')">
+            Podany adres email jest <strong>niepoprawny</strong>
+          </mat-error>
+        </mat-form-field>
 
-</form>
+        <button [disabled]="!form.valid" mat-raised-button color="primary" type="submit" (click)="submitFirstStep()" matStepperNext>Przejdź do podsumowania</button>
+
+      </form>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="tokenForm">
+    <form *ngIf="!secondStepSubmited" [formGroup]="tokenForm">
+      <ng-template matStepLabel>Wpisz token sms</ng-template>
+      <app-summary *ngIf="firstStepSubmited" [transferForm]="form.value"></app-summary>
+      <mat-form-field *ngIf="firstStepSubmited">
+        <input matInput placeholder="Token" type="number" formControlName="token"
+               [errorStateMatcher]="matcher">
+        <button mat-button *ngIf="tokenForm.controls.token.value" matSuffix mat-icon-button aria-label="Clear" (click)="tokenForm.controls.token.setValue('')">
+          <mat-icon>close</mat-icon>
+        </button>
+        <mat-hint>Pole jest wymagane!</mat-hint>
+         <mat-error *ngIf="tokenForm.controls.token.hasError('required')">Token jest <strong>wymagany</strong>
+        </mat-error>
+        <mat-error *ngIf="tokenForm.controls.token.hasError('token')">Token jest <strong>nieprawidłowy</strong>
+        </mat-error>
+      </mat-form-field>
+      <div>
+        <button mat-button matStepperPrevious (click)="reload()">Anuluj</button>
+        <button mat-button matStepperNext [disabled]="tokenForm.errors" (click)="tryExecuteTransfer()">Wykonaj przelew</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>Wyślij przelew</ng-template>
+    <app-summary *ngIf="firstStepSubmited" [transferForm]="form.value"></app-summary>
+    <mat-spinner *ngIf="waitForTransferExecutionResult"></mat-spinner>
+  </mat-step>
+</mat-horizontal-stepper>

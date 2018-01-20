@@ -1,5 +1,5 @@
 <mat-sidenav-container class="sidenav-fab-container">
-  <mat-sidenav #sidenav mode="over" opened="false">
+  <mat-sidenav #sidenav mode="over" opened="false" class="sidenav">
     <app-side-nav-list *ngIf="menuItems | async" [menuItems]="menuItems | async"></app-side-nav-list>
   </mat-sidenav>
 

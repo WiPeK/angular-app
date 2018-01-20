@@ -1,41 +1,52 @@
-<h1 mat-dialog-title>Hi</h1>
+<h1 mat-dialog-title>Wybierz odbiorcę lub wielu odbiorców</h1>
 <div mat-dialog-content>
-  <p>Wybierz odbiorcę lub wielu odbiorców</p>
-  <!--<mat-form-field>-->
-    <!--<input matInput tabindex="1" [(ngModel)]="data.animal">-->
-  <!--</mat-form-field>-->
   <div class="example-container mat-elevation-z8">
-    <div class="example-header">
-      <mat-form-field floatPlaceholder="never">
-        <input matInput #filter placeholder="Filtruj odbiorców">
-      </mat-form-field>
-    </div>
 
-    <mat-table #table [dataSource]="data" matSort>
+    <mat-table #table [dataSource]="dataSource" matSort>
+      <!-- Checkbox Column -->
+      <ng-container matColumnDef="select">
+        <mat-header-cell *matHeaderCellDef>
+          <mat-checkbox (change)="$event ? masterToggle() : null"
+                        [checked]="selection.hasValue() && isAllSelected()"
+                        [indeterminate]="selection.hasValue() && !isAllSelected()">
+          </mat-checkbox>
+        </mat-header-cell>
+        <mat-cell *matCellDef="let row">
+          <mat-checkbox (click)="$event.stopPropagation()"
+                        (change)="$event ? selection.toggle(row) : null"
+                        [checked]="selection.isSelected(row)">
+          </mat-checkbox>
+        </mat-cell>
+      </ng-container>
+
       <!--account number column-->
-      <ng-container matColumnDef="accoutNumber">
+      <ng-container matColumnDef="accountNumber">
         <mat-header-cell *matHeaderCellDef mat-sort-header>Numer konta</mat-header-cell>
-        <mat-cell *matCellDef="let row"> {{row.accountNumber}} </mat-cell>
+        <mat-cell *matCellDef="let element"> {{element.domesticBeneficiary.accountNumber}} </mat-cell>
       </ng-container>
 
       <!-- beneficiary name Column -->
       <ng-container matColumnDef="name">
         <mat-header-cell *matHeaderCellDef mat-sort-header>Dane</mat-header-cell>
-        <mat-cell *matCellDef="let row"> {{row.name}} </mat-cell>
+        <mat-cell *matCellDef="let element"> {{element.domesticBeneficiary.name}} </mat-cell>
       </ng-container>
 
       <!-- Address Column -->
       <ng-container matColumnDef="address">
         <mat-header-cell *matHeaderCellDef mat-sort-header>Adres</mat-header-cell>
-        <mat-cell *matCellDef="let row"> {{row.address}} </mat-cell>
+        <mat-cell *matCellDef="let element"> {{element?.domesticBeneficiary?.address}} </mat-cell>
       </ng-container>
 
       <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;" click="alert(row)"></mat-row>
     </mat-table>
+    <mat-paginator #paginator
+                   [pageSize]="10"
+                   [pageSizeOptions]="[5, 10, 20]">
+    </mat-paginator>
   </div>
 </div>
 <div mat-dialog-actions>
-  <!--<button mat-button [mat-dialog-close]="data.animal" tabindex="2">Ok</button>-->
+  <button mat-button tabindex="2" [mat-dialog-close]="selection.selected" cdkFocusInitial>Wybierz zaznaczonych</button>
   <button mat-button (click)="onNoClick()" tabindex="-1">Wyjdź</button>
 </div>

@@ -26,6 +26,18 @@
       {
         "url": "/payments/foreign",
         "name": "Przelew zagraniczny"
+      },
+      {
+        "url": "/payments/zus",
+        "name": "Przelew ZUS"
+      },
+      {
+        "url": "/payments/tax",
+        "name": "Przelew podatkowy"
+      },
+      {
+        "url": "/payments/defined",
+        "name": "Zlecenia stałe"
       }
     ]
   },

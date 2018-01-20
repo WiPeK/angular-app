@@ -3,11 +3,11 @@
 </div>
 <mat-spinner *ngIf="isSpinnerVisible"></mat-spinner>
 <div class="example-container mat-elevation-z8" [hidden]="!isTableVisible">
-  <div class="example-header">
-    <mat-form-field>
-      <input matInput (keyup)="applyFilter($event.target.value.account)" placeholder="Filter">
-    </mat-form-field>
-  </div>
+  <!--<div class="example-header">-->
+    <!--<mat-form-field>-->
+      <!--<input matInput (keyup)="applyFilter($event.target.value.account)" placeholder="Filter">-->
+    <!--</mat-form-field>-->
+  <!--</div>-->
 
   <mat-table #table [dataSource]="dataSource" matSort>
 

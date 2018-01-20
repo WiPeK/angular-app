@@ -1,0 +1,86 @@
+<mat-list>
+  <h3 mat-subheader>Rachunek do pobrania kwoty przelewu</h3>
+  <mat-list-item>
+    <mat-icon mat-list-icon>account_circle</mat-icon>
+    <h4 mat-line>{{transferForm.userAccount.account.accountNumber}}</h4>
+    <p mat-line> {{transferForm.userAccount.account?.currency?.code}} </p>
+  </mat-list-item>
+  <mat-divider></mat-divider>
+
+  <h3 mat-subheader>Odbiorcy przelewu</h3>
+  <ng-container *ngIf="transferForm.beneficiary.length === 1">
+    <mat-list-item>
+      <mat-icon mat-list-icon>supervisor_account</mat-icon>
+      <h4 mat-line>{{transferForm.beneficiary.accountNumber}}</h4>
+      <p mat-line> {{transferForm.beneficiary.name}} </p>
+      <p mat-line> {{transferForm.beneficiary?.address}} </p>
+    </mat-list-item>
+  </ng-container>
+
+  <ng-container *ngIf="transferForm.beneficiary.length > 1">
+
+    <mat-accordion>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Lista odbiorców przelewu
+          </mat-panel-title>
+          <mat-panel-description>
+            Naciśnij aby rozwinąć liste
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+
+        <mat-list-item *ngFor="let beneficiary of transferForm.beneficiary">
+          <mat-icon mat-list-icon>supervisor_account</mat-icon>
+          <h4 mat-line>{{beneficiary.domesticBeneficiary.accountNumber}}</h4>
+          <p mat-line> {{beneficiary.domesticBeneficiary.name}} </p>
+          <p mat-line> {{beneficiary?.domesticBeneficiary?.address}} </p>
+        </mat-list-item>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </ng-container>
+  <mat-divider></mat-divider>
+
+  <h3 mat-subheader>Typ przelewu</h3>
+  <mat-list-item>
+    <mat-icon mat-list-icon>toc</mat-icon>
+    <h4 mat-line>{{transferForm.type.value}}</h4>
+  </mat-list-item>
+  <mat-divider></mat-divider>
+
+  <h3 mat-subheader>Kwota przelewu dla każdego odbiorcy</h3>
+  <mat-list-item>
+    <mat-icon mat-list-icon>attach_money</mat-icon>
+    <h4 mat-line>{{transferForm.amount}}</h4>
+  </mat-list-item>
+  <mat-divider></mat-divider>
+
+  <h3 mat-subheader>Tytuł przelewu</h3>
+  <mat-list-item>
+    <mat-icon mat-list-icon>subtitles</mat-icon>
+    <h4 mat-line>{{transferForm.title}}</h4>
+  </mat-list-item>
+  <mat-divider></mat-divider>
+
+  <h3 mat-subheader>Data przelewu</h3>
+  <mat-list-item>
+    <mat-icon mat-list-icon>date_range</mat-icon>
+    <h4 mat-line>{{transferForm.date}}</h4>
+  </mat-list-item>
+  <mat-divider></mat-divider>
+
+  <h3 mat-subheader>Zapisać jako przelew zdefiniowany</h3>
+  <mat-list-item>
+    <mat-icon mat-list-icon>save</mat-icon>
+    <h4 mat-line>{{transferForm.template ? 'Tak' : 'Nie'}}</h4>
+  </mat-list-item>
+  <mat-divider></mat-divider>
+
+  <h3 mat-subheader>Wysłać email z potwierdzeniem</h3>
+  <mat-list-item>
+    <mat-icon mat-list-icon>email</mat-icon>
+    <h4 mat-line>{{transferForm.emailConfirm ? 'Tak' : 'Nie'}}</h4>
+    <p mat-line *ngIf="transferForm.emailConfirm">Na email: {{transferForm.email}}</p>
+  </mat-list-item>
+
+</mat-list>

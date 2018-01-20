@@ -4,6 +4,7 @@ import {User} from '../models/user.model';
 @Injectable()
 export class StoreService {
   private _token: string;
+  private _domesticTransferToken: string;
   private _user: User;
 
   get user(): User {
@@ -24,5 +25,13 @@ export class StoreService {
 
   set token(value: string) {
     this._token = value;
+  }
+
+  get domesticTransferToken(): string {
+    return this._domesticTransferToken;
+  }
+
+  set domesticTransferToken(value: string) {
+    this._domesticTransferToken = value;
   }
 }
