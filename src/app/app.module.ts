@@ -14,6 +14,7 @@ import {AuthModule} from './auth/auth.module';
 import {ReactiveFormsModule} from '@angular/forms';
 import {AppRoutingModule} from './app.routing';
 import {PaymentsModule} from './payments/payments.module';
+import {LoansModule} from './loans/loans.module';
 import {AccountsModule} from './accounts/accounts.module';
 
 @NgModule({
@@ -34,6 +35,7 @@ import {AccountsModule} from './accounts/accounts.module';
     AuthModule,
     HttpClientModule,
     PaymentsModule,
+    LoansModule,
     AccountsModule
   ],
   exports: [
@@ -47,6 +49,7 @@ import {AccountsModule} from './accounts/accounts.module';
     HomeModule,
     AppRoutingModule,
     PaymentsModule,
+    LoansModule,
     AccountsModule
   ],
   providers: [],
