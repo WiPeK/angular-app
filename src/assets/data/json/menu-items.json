@@ -30,6 +30,21 @@
     ]
   },
   {
+    "url": "",
+    "name": "Kredyty",
+    "icon": "style",
+    "subItems": [
+      {
+        "url": "/credits/personal",
+        "name": "Kredyt konsumencki"
+      },
+      {
+        "url": "/credits/business",
+        "name": "Kredyt firmowy"
+      }
+    ]
+  },
+  {
     "url": "/about",
     "name": "O BANKU",
     "icon": "speaker_notes"
