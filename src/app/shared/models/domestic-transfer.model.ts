@@ -3,7 +3,7 @@ import {DomesticBeneficiary} from './domestic-beneficiary.model';
 
 export interface DomesticTransfer {
   userAccount?: Account;
-  beneficiary?: DomesticBeneficiary[] | string
+  beneficiary?: DomesticBeneficiary[];
   beneficiaryAccount?: string;
   address?: string;
   type?: any;

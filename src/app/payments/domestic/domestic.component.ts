@@ -14,6 +14,7 @@ import {TransferTypesService} from '../services/transfer-types.service';
 import {TokenService} from '../services/token.service';
 import {tokenValidator} from '../../shared/validators/token.validator';
 import {DomesticTransferService} from '../services/domestic-transfer.service';
+import {DomesticTransfer} from '../../shared/models/domestic-transfer.model';
 
 @Component({
   selector: 'app-domestic',
@@ -79,11 +80,36 @@ export class DomesticComponent {
 
   tryExecuteTransfer() {
     this.secondStepSubmited = true;
-    const transferExecutionResult = this.domesticTransferService.tryExecuteTransfer(this.storeService.user.id, this.form.value);
+    this._whenOneBeneficiaryConvertToArray();
+    let formValue: DomesticTransfer = this.form.value;
+    formValue = this._convertJson(formValue);
+    const transferExecutionResult = this.domesticTransferService.tryExecuteTransfer(this.storeService.user.id, formValue);
     transferExecutionResult.subscribe(data => {
       this.waitForTransferExecutionResult = false;
       console.log(data);
     })
+  }
+
+  private _convertJson(formValue: DomesticTransfer): DomesticTransfer {
+    const account = formValue.userAccount;
+    formValue.userAccount = account;
+    delete formValue.beneficiaryAccount;
+    delete formValue.address;
+    return formValue;
+  }
+
+  private _whenOneBeneficiaryConvertToArray() {
+    if (this.noBeneficiariesSelected) {
+      const beneficiary: DomesticBeneficiary = {
+        name: this.form.controls.beneficiary.value,
+        address: this.form.controls.address.value,
+        accountNumber: this.form.controls.beneficiaryAccount.value
+      };
+
+      this.form.controls.beneficiary.setValue([{
+        domesticBeneficiary: beneficiary
+      }]);
+    }
   }
 
   private _generateToken() {

@@ -11,6 +11,7 @@ export class DomesticTransferService {
   }
 
   tryExecuteTransfer(userId: string, domesticTransfer: DomesticTransfer): Observable<any[]> {
+    console.log(domesticTransfer);
     return this.http.post<any[]>(API_URL + 'payments/domestic/' + userId, domesticTransfer);
   }
 }
