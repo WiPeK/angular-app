@@ -13,6 +13,7 @@ import { SelectedBeneficiariesListComponent } from './beneficiaries/selected-ben
 import {TokenService} from './services/token.service';
 import { SummaryComponent } from './domestic/summary/summary.component';
 import {DomesticTransferService} from './services/domestic-transfer.service';
+import { ScheduledTransferComponent } from './scheduled-transfer/scheduled-transfer.component';
 
 @NgModule({
   imports: [
@@ -23,7 +24,7 @@ import {DomesticTransferService} from './services/domestic-transfer.service';
     ReactiveFormsModule,
     SharedModule
   ],
-  declarations: [DomesticComponent, BeneficiariesDialogComponent, SelectedBeneficiariesListComponent, SummaryComponent],
+  declarations: [DomesticComponent, BeneficiariesDialogComponent, SelectedBeneficiariesListComponent, SummaryComponent, ScheduledTransferComponent],
   providers: [AccountsService, BeneficiariesService, TransferTypesService, TokenService, DomesticTransferService],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   entryComponents: [BeneficiariesDialogComponent]
