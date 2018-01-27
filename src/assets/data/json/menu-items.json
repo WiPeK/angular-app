@@ -45,6 +45,21 @@
     ]
   },
   {
+    "url": "",
+    "name": "Depozyty",
+    "icon": "assessment",
+    "subItems": [
+      {
+        "url": "/deposits/regular",
+        "name": "Utwórz lokatę"
+      },
+      {
+        "url": "/deposits/all",
+        "name": "Wyświetl lokaty"
+      }
+    ]
+  },
+  {
     "url": "/about",
     "name": "O BANKU",
     "icon": "speaker_notes"

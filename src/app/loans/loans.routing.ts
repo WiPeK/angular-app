@@ -4,7 +4,7 @@ import {PersonalComponent} from './personal/personal.component';
 
 const routes: Routes = [
   {
-    path: 'loans/personal',
+    path: 'loans/regular',
     component: PersonalComponent
   }
 ];

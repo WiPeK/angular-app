@@ -10,7 +10,7 @@ export class TransferTypesService {
   constructor(private http: HttpClient) {
   }
 
-  getPersonalTransferTypes(): Observable<DictionaryItem[]> {
-    return this.http.get<DictionaryItem[]>(API_URL + 'loans/types/regular');
+  getRegularTransferTypes(): Observable<DictionaryItem[]> {
+    return this.http.get<DictionaryItem[]>(API_URL + 'deposits/types/regular');
   }
 }
