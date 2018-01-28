@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {AfterViewInit, Component, Input, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-summary',
@@ -6,7 +6,6 @@ import {Component, Input, OnInit} from '@angular/core';
   styleUrls: ['./summary.component.scss']
 })
 export class SummaryComponent {
-
   @Input('transferForm')
   transferForm: any;
 

@@ -98,7 +98,6 @@ export class DomesticComponent {
 
   private _convertJson(formValue: DomesticTransfer): DomesticTransfer {
     formValue.beneficiary = this.form.controls.beneficiary.value.map(i => {
-      console.log(i);
       i = {
         id: i.id,
         name: i.name,
@@ -117,7 +116,6 @@ export class DomesticComponent {
 
   private _whenOneBeneficiaryConvertToArray() {
     if (this.noBeneficiariesSelected) {
-      console.log(this.form.value);
       const beneficiary: DomesticBeneficiary = {
         name: this.form.controls.beneficiary.value,
         address: this.form.controls.address.value,
@@ -127,7 +125,6 @@ export class DomesticComponent {
       this.form.controls.beneficiary.setValue([
         beneficiary
       ]);
-      console.log(this.form.value);
     }
   }
 
@@ -153,11 +150,7 @@ export class DomesticComponent {
       template: [''],
       emailConfirm: [''],
       email: ['']
-    },
-      {
-        // validators: Validators.compose([moneyInAccountValidator('userAccount', 'amount')])
-      });
-    // todo number validation
+    });
 
     this.tokenForm = this.fb.group({
       token: ['']
