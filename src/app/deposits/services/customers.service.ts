@@ -4,11 +4,11 @@ import {Observable} from 'rxjs/Observable';
 import {HttpClient} from '@angular/common/http';
 
 @Injectable()
-export class BeneficiariesService {
+export class CustomersService{
   constructor(private http: HttpClient) {
   }
 
-  getAllDomesticBeneficiaries(userId: string): Observable<Account[]> {
+  getAllPersonalCustomers(userId: string): Observable<Account[]> {
     return this.http.get<Account[]>(API_URL + 'customers/regular/customers/' + userId);
   }
 }
