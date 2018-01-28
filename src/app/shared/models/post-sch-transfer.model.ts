@@ -1,7 +1,5 @@
 
-
 export interface PostSchTransfer {
-
   transferId: string;
   trans_state: string;
   ben_iban: string;
