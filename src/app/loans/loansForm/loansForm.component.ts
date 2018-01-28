@@ -1,9 +1,9 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {MatDialog, MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
 import {Observable} from 'rxjs/Observable';
-import {Loan} from '../../shared/models/Loan.model';
 import {FormGroup} from '@angular/forms';
 import {LoansService} from '../services/loans.service';
+import {Loan} from '../../shared/models/loan.model';
 
 
 @Component({

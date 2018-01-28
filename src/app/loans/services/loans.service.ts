@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs/Observable';
 import {API_URL} from '../../app.consts';
-import {Loan} from '../../shared/models/Loan.model';
+import {Loan} from '../../shared/models/loan.model';
 
 @Injectable()
 export class LoansService {
