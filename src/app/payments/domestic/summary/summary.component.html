@@ -2,8 +2,8 @@
   <h3 mat-subheader>Rachunek do pobrania kwoty przelewu</h3>
   <mat-list-item>
     <mat-icon mat-list-icon>account_circle</mat-icon>
-    <h4 mat-line>{{transferForm.userAccount.account.accountNumber}}</h4>
-    <p mat-line> {{transferForm.userAccount.account?.currency?.code}} </p>
+    <h4 mat-line>{{transferForm.userAccount.accountNumber}}</h4>
+    <p mat-line> {{transferForm.userAccount?.currency?.code}} </p>
   </mat-list-item>
   <mat-divider></mat-divider>
 
@@ -32,9 +32,9 @@
 
         <mat-list-item *ngFor="let beneficiary of transferForm.beneficiary">
           <mat-icon mat-list-icon>supervisor_account</mat-icon>
-          <h4 mat-line>{{beneficiary.domesticBeneficiary.accountNumber}}</h4>
-          <p mat-line> {{beneficiary.domesticBeneficiary.name}} </p>
-          <p mat-line> {{beneficiary?.domesticBeneficiary?.address}} </p>
+          <h4 mat-line>{{beneficiary.accountNumber}}</h4>
+          <p mat-line> {{beneficiary.name}} </p>
+          <p mat-line> {{beneficiary?.address}} </p>
         </mat-list-item>
       </mat-expansion-panel>
     </mat-accordion>

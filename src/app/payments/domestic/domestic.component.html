@@ -7,8 +7,8 @@
         <mat-form-field>
           <mat-select placeholder="Rachunek do pobrania kwoty przelewu" formControlName="userAccount">
             <mat-option *ngFor="let account of accounts$ | async" [value]="account">
-              <span>{{ account.account.accountNumber }}</span> |
-              <small>{{account.account?.currency?.code}}</small>
+              <span>{{ account.accountNumber }}</span> |
+              <small>{{account?.currency?.code}}</small>
             </mat-option>
           </mat-select>
           <button mat-button *ngIf="form.controls.userAccount.value" matSuffix mat-icon-button aria-label="Clear" (click)="form.controls.userAccount.setValue('')">
@@ -159,6 +159,7 @@
   <mat-step>
     <ng-template matStepLabel>Wyślij przelew</ng-template>
     <app-summary *ngIf="firstStepSubmited" [transferForm]="form.value"></app-summary>
-    <mat-spinner *ngIf="waitForTransferExecutionResult"></mat-spinner>
+    <mat-spinner class="spinner-center" *ngIf="waitForTransferExecutionResult"></mat-spinner>
+    <app-execution-status transferResponse="transferReposnse" *ngIf="!waitForTransferExecutionResult"></app-execution-status>
   </mat-step>
 </mat-horizontal-stepper>

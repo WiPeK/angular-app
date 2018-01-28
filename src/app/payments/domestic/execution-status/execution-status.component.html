@@ -1,0 +1,13 @@
+<mat-list>
+  <h3 mat-subheader>Przelew {{transferResponse.status == 'STATUS_ERROR' ? 'nie' : ''}} został wykonany</h3>
+  <mat-list-item *ngIf="transferResponse.costs != null">
+    <h4 mat-line>Koszta przelewu: {{transferResponse.costs}}</h4>
+    <p mat-line></p>
+  </mat-list-item>
+</mat-list>
+<mat-list *ngIf="transferResponse.errors != null && transferResponse.errors.length > 0">
+  <h3 mat-subheader>Błędy wykonania przelewu</h3>
+  <mat-list-item>
+    <p mat-line *ngFor="let error of transferResponse.errors">{{error}}</p>
+  </mat-list-item>
+</mat-list>
