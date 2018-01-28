@@ -1,0 +1,52 @@
+
+<div class="example-container mat-elevation-z8">
+  <!--<div class="example-header">-->
+  <!--<mat-form-field>-->
+  <!--<input matInput (keyup)="applyFilter($event.target.value.account)" placeholder="Filter">-->
+  <!--</mat-form-field>-->
+  <!--</div>-->
+
+
+  <mat-table #table [dataSource]="dataSource" matSort>
+
+    <ng-container matColumnDef="account">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Numer konta</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.scheduledTransferShared.IBAN}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="balance">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Stan konta </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.scheduledTransferShared.balance}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="ben_iban">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Numer Konta Nadawcy </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.scheduledTransferShared.beneficiaryIBAN}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="trans_state">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Status </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.scheduledTransferShared.state}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="trans_date">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Zaplanowana data przelewu </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.scheduledTransferShared.date}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="transferId">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Id przelewu</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.scheduledTransferShared.id}} </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;" (click)="openDialog(row)"></mat-row>
+  </mat-table>
+
+  <mat-paginator #paginator
+                 [pageSize]="10"
+                 [pageSizeOptions]="[5, 10, 20]">
+  </mat-paginator>
+</div>
+
+
