@@ -55,12 +55,33 @@
     ]
   },
   {
-    "url": "/about",
+    "url": "",
+    "name": "Kredyty",
+    "icon": "account_balance",
+    "subItems": [
+      {
+        "url": "",
+        "name": "Szybki Kredyt",
+        "subItems": [
+          {
+            "url": "loans/personal",
+            "name": "Weź Kredyt"
+          },
+          {
+            "url": "loans/all",
+            "name": "Pokaż Kredyty"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "url": "about/information",
     "name": "O BANKU",
     "icon": "speaker_notes"
   },
   {
-    "url": "/contact",
+    "url": "contact/clientPost",
     "name": "KONTAKT",
     "icon": "contacts"
   }

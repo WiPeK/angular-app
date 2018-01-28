@@ -1,6 +1,5 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
-
 import {AppComponent} from './app.component';
 import {SharedModule} from './shared/shared.module';
 import {CommonModule} from '@angular/common';
@@ -13,15 +12,17 @@ import {HttpClientModule} from '@angular/common/http';
 import {AuthModule} from './auth/auth.module';
 import {ReactiveFormsModule} from '@angular/forms';
 import {AppRoutingModule} from './app.routing';
+import {AboutModule} from './about/about.module';
+import {ContactModule} from './contact/contact.module';
 import {PaymentsModule} from './payments/payments.module';
 import {LoansModule} from './loans/loans.module';
 import {DepositsModule} from './deposits/deposits.module';
 import {AccountsModule} from './accounts/accounts.module';
-
+import {LoansFormComponent} from './loans/loansForm/loansForm.component';
 
 @NgModule({
   declarations: [
-    AppComponent,
+    AppComponent
   ],
   imports: [
     BrowserModule,
@@ -31,14 +32,16 @@ import {AccountsModule} from './accounts/accounts.module';
     SharedModule,
     HttpModule,
     AppRoutingModule,
+    DepositsModule,
     RouterModule,
     LayoutModule,
+    LoansModule,
+    AboutModule,
+    ContactModule,
     HomeModule,
     AuthModule,
     HttpClientModule,
     PaymentsModule,
-    LoansModule,
-    DepositsModule,
     AccountsModule
   ],
   exports: [
@@ -47,13 +50,15 @@ import {AccountsModule} from './accounts/accounts.module';
     ReactiveFormsModule,
     CommonModule,
     HttpModule,
+    DepositsModule,
     SharedModule,
+    LoansModule,
     LayoutModule,
+    AboutModule,
+    ContactModule,
     HomeModule,
     AppRoutingModule,
     PaymentsModule,
-    LoansModule,
-    DepositsModule,
     AccountsModule
   ],
   providers: [],

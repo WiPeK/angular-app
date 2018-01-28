@@ -7,7 +7,7 @@ describe('angular App', () => {
     page = new AngularPage();
   });
 
-  it('should display welcome message', () => {
+  it('should display clientPost message', () => {
     page.navigateTo();
     expect(page.getParagraphText()).toEqual('Welcome to app!!');
   });

@@ -1,11 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import {Component} from '@angular/core';
 import {Account} from '../../shared/models/account.model';
 import {Observable} from 'rxjs/Observable';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {AccountsService} from '../services/accounts.service';
 import {Borrowers} from '../../shared/models/borrowers.model';
 import {BorrowersService} from '../services/borrowers.service';
-import {moneyInAccountValidator} from '../../shared/validators/money-in-account.validator';
 import {StoreService} from '../../shared/store/store.service';
 import {MyErrorStateMatcher} from '../../shared/validators/error-matcher.validator';
 import {MatDialog} from '@angular/material';

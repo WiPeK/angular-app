@@ -11,6 +11,6 @@ export class TransferTypesService {
   }
 
   getPersonalTransferTypes(): Observable<DictionaryItem[]> {
-    return this.http.get<DictionaryItem[]>(API_URL + 'loans/types/regular');
+    return this.http.get<DictionaryItem[]>(API_URL + 'loans/types/personal');
   }
 }
