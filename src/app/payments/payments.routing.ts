@@ -4,7 +4,7 @@ import {DomesticComponent} from './domestic/domestic.component';
 
 const routes: Routes = [
   {
-    path: 'payments/domestic',
+    path: 'payments/deposits',
     component: DomesticComponent
   }
 ];
