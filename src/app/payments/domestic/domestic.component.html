@@ -151,15 +151,15 @@
         </mat-error>
       </mat-form-field>
       <div>
-        <button mat-button matStepperPrevious (click)="reload()">Anuluj</button>
-        <button mat-button matStepperNext [disabled]="tokenForm.errors" (click)="tryExecuteTransfer()">Wykonaj przelew</button>
+        <button type="button" mat-button matStepperPrevious (click)="reload()">Anuluj</button>
+        <button type="button" mat-button matStepperNext [disabled]="tokenForm.errors" (click)="tryExecuteTransfer()">Wykonaj przelew</button>
       </div>
     </form>
   </mat-step>
   <mat-step>
     <ng-template matStepLabel>Wyślij przelew</ng-template>
-    <app-summary *ngIf="firstStepSubmited" [transferForm]="form.value"></app-summary>
+    <app-summary *ngIf="secondStepSubmited" [transferForm]="form.value"></app-summary>
     <mat-spinner class="spinner-center" *ngIf="waitForTransferExecutionResult"></mat-spinner>
-    <app-execution-status transferResponse="transferReposnse" *ngIf="!waitForTransferExecutionResult"></app-execution-status>
+    <app-execution-status transferResponse="transferResponse" *ngIf="!waitForTransferExecutionResult"></app-execution-status>
   </mat-step>
 </mat-horizontal-stepper>

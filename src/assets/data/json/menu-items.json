@@ -10,11 +10,6 @@
     "icon": "local_offer"
   },
   {
-    "url": "/cv",
-    "name": "CV",
-    "icon": "account_box"
-  },
-  {
     "url": "",
     "name": "Przelewy",
     "icon": "style",
@@ -24,24 +19,8 @@
         "name": "Przelew krajowy"
       },
       {
-        "url": "/payments/foreign",
-        "name": "Przelew zagraniczny"
-      },
-      {
-        "url": "/payments/zus",
-        "name": "Przelew ZUS"
-      },
-      {
-        "url": "/payments/tax",
-        "name": "Przelew podatkowy"
-      },
-      {
-        "url": "/payments/defined",
-        "name": "Zlecenia stałe"
-      },
-      {
         "url": "/payments/scheduled-transfer",
-        "name": "przelew zaplanowany"
+        "name": "Przelew zaplanowany"
       }
     ]
   },

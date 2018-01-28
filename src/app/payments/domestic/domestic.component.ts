@@ -82,6 +82,7 @@ export class DomesticComponent {
   }
 
   tryExecuteTransfer() {
+    this.waitForTransferExecutionResult = true;
     this.secondStepSubmited = true;
     // this._whenOneBeneficiaryConvertToArray();
     let formValue: DomesticTransfer = this.form.value;
