@@ -21,18 +21,21 @@
       {
         "url": "payments/foreign",
         "name": "Przelew zagraniczny"
+      }
+    ]
+  },
+  {
+    "url": "",
+    "name": "Depozyty",
+    "icon": "assessment",
+    "subItems": [
+      {
+        "url": "deposits/regular",
+        "name": "Utwórz lokatę"
       },
       {
-        "url": "payments/zus",
-        "name": "Przelew ZUS"
-      },
-      {
-        "url": "payments/tax",
-        "name": "Przelew podatkowy"
-      },
-      {
-        "url": "payments/defined",
-        "name": "Zlecenia stałe"
+        "url": "deposits/all",
+        "name": "Wyświetl lokaty"
       }
     ]
   },
@@ -42,12 +45,18 @@
     "icon": "account_balance",
     "subItems": [
       {
-        "url": "loans/personal",
-        "name": "Kredyt konsumencki"
-      },
-      {
-        "url": "loans/business",
-        "name": "Kredyt firmowy"
+        "url": "",
+        "name": "Szybki Kredyt",
+        "subItems": [
+          {
+            "url": "loans/personal",
+            "name": "Weź Kredyt"
+          },
+          {
+            "url": "loans/all",
+            "name": "Pokaż Kredyty"
+          }
+        ]
       }
     ]
   },

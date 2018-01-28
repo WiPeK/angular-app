@@ -1,19 +1,19 @@
 <h1 mat-dialog-title>Hi</h1>
 <div mat-dialog-content>
-  <p>Wybierz odbiorcę lub wielu odbiorców</p>
+  <p>Wybierz kredytobiorę</p>
   <!--<mat-form-field>-->
     <!--<input matInput tabindex="1" [(ngModel)]="data.animal">-->
   <!--</mat-form-field>-->
   <div class="example-container mat-elevation-z8">
     <div class="example-header">
       <mat-form-field floatPlaceholder="never">
-        <input matInput #filter placeholder="Filtruj odbiorców">
+        <input matInput #filter placeholder="Filtruj kredytobiorców">
       </mat-form-field>
     </div>
 
     <mat-table #table [dataSource]="data" matSort>
       <!--account number column-->
-      <ng-container matColumnDef="accoutNumber">
+      <ng-container matColumnDef="accountNumber">
         <mat-header-cell *matHeaderCellDef mat-sort-header>Numer konta</mat-header-cell>
         <mat-cell *matCellDef="let row"> {{row.accountNumber}} </mat-cell>
       </ng-container>

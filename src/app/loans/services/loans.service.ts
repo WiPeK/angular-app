@@ -1,15 +1,15 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs/Observable';
-import {Account} from '../../shared/models/account.model';
 import {API_URL} from '../../app.consts';
+import {Loan} from '../../shared/models/Loan.model';
 
 @Injectable()
-export class AccountsService {
+export class LoansService {
   constructor(private http: HttpClient) {
   }
 
-  getAll(userId: string): Observable<Account[]> {
-    return this.http.get<Account[]>(API_URL + 'accounts/borrowers/' + userId);
+  getLoans(): Observable<Loan[]> {
+    return this.http.get<Loan[]>(API_URL + 'loans/loans/all');
   }
 }

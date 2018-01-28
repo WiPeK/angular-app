@@ -1,0 +1,54 @@
+<div class="example-container mat-elevation-z8">
+  <!--<div class="example-header">-->
+  <!--<mat-form-field>-->
+  <!--<input matInput (keyup)="applyFilter($event.target.value.account)" placeholder="Filter">-->
+  <!--</mat-form-field>-->
+  <!--</div>-->
+
+
+  <mat-table #table [dataSource]="dataSource" matSort>
+
+    <ng-container matColumnDef="account">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Numer konta</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.loan.account.accountNumber}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="name">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Nazwa</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.loan.name}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="amount">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Wartość</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.loan.amount}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="currency">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Zaplanowana data przelewu kredytu</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.loan.account.currency}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="dateFrom">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Data pobrania</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.loan.dateFrom}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="dateTo">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Data zakończenia</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.loan.dateTo}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="id">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>ID KREDYTU</mat-header-cell>
+      <mat-cell *matCellDef="let element">{{element.loan.id}}</mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;" (click)="openDialog(row)"></mat-row>
+  </mat-table>
+
+  <mat-paginator #paginator
+                 [pageSize]="10"
+                 [pageSizeOptions]="[5, 10, 20]">
+  </mat-paginator>
+</div>
