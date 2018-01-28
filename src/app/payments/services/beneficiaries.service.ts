@@ -9,6 +9,6 @@ export class BeneficiariesService {
   }
 
   getAllDomesticBeneficiaries(userId: string): Observable<Account[]> {
-    return this.http.get<Account[]>(API_URL + 'customers/regular/customers/' + userId);
+    return this.http.get<Account[]>(API_URL + 'beneficiaries/domestic/customers/' + userId);
   }
 }
