@@ -1,7 +1,7 @@
-import {Account} from "./account.model";
 
-export interface ScheduledTransfer {
-  account?: Account;
+
+export interface PostSchTransfer {
+
   transferId: string;
   trans_state: string;
   ben_iban: string;
