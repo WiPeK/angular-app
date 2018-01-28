@@ -5,7 +5,6 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {AccountsService} from '../services/accounts.service';
 import {Customers} from '../../shared/models/customers.model';
 import {CustomersService} from '../services/customers.service';
-import {moneyInAccountValidator} from '../../shared/validators/money-in-account.validator';
 import {StoreService} from '../../shared/store/store.service';
 import {MyErrorStateMatcher} from '../../shared/validators/error-matcher.validator';
 import {MatDialog} from '@angular/material';
@@ -32,7 +31,7 @@ export class PersonalComponent {
               private storeService: StoreService,
               private transferTypesService: TransferTypesService,
               private fb: FormBuilder) {
-    this.accounts$ = this.accountService.getAll(this.storeService.user.id);
+    this.accounts$ = this.accountService.getAll();
     this.paymentTypes$ = this.transferTypesService.getRegularTransferTypes();
     this.customers$ = this.customersService.getAllPersonalCustomers(this.storeService.user.id);
     this._createForm();
@@ -42,7 +41,7 @@ export class PersonalComponent {
   openDialog(): void {
     const dialogRef = this.dialog.open(CustomersDialogComponent, {
       width: '250px',
-      data: this.customers$
+      data: this.accounts$
     });
 
     dialogRef.afterClosed().subscribe(result => {

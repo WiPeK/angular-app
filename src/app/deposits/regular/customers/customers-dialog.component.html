@@ -1,6 +1,6 @@
 <h1 mat-dialog-title>Hi</h1>
 <div mat-dialog-content>
-  <p>Wybierz odbiorcę lub wielu odbiorców</p>
+  <p>Wybierz klienta</p>
   <!--<mat-form-field>-->
     <!--<input matInput tabindex="1" [(ngModel)]="data.animal">-->
   <!--</mat-form-field>-->
@@ -26,8 +26,8 @@
 
       <!-- Address Column -->
       <ng-container matColumnDef="address">
-        <mat-header-cell *matHeaderCellDef mat-sort-header>Adres</mat-header-cell>
-        <mat-cell *matCellDef="let row"> {{row.address}} </mat-cell>
+        <mat-header-cell *matHeaderCellDef mat-sort-header>waluta</mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{row.currency.code}} </mat-cell>
       </ng-container>
 
       <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>

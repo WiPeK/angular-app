@@ -9,7 +9,7 @@ export class AccountsService {
   constructor(private http: HttpClient) {
   }
 
-  getAll(userId: string): Observable<Account[]> {
-    return this.http.get<Account[]>(API_URL + 'accounts/customers/' + userId);
+  getAll(): Observable<Account[]> {
+    return this.http.get<Account[]>(API_URL + 'accounts');
   }
 }

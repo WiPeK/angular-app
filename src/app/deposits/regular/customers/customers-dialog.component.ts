@@ -6,7 +6,7 @@ import {MAT_DIALOG_DATA, MatDialogRef, MatSort, MatTableDataSource} from '@angul
   templateUrl: 'customers-dialog.component.html',
 })
 export class CustomersDialogComponent implements AfterViewInit {
-  displayedColumns = ['accountNumber', 'name', 'address'];
+  displayedColumns = ['accountNumber', 'balance', 'address'];
   dataSource: MatTableDataSource<any>;
 
   @ViewChild(MatSort)
