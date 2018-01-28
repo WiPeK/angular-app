@@ -1,18 +1,13 @@
 [
   {
-    "url": "/",
+    "url": "home/welcome",
     "name": "STRONA GŁÓWNA",
     "icon": "home"
   },
   {
-    "url": "/accounts/bonuses",
+    "url": "accounts/bonuses",
     "name": "BONUSY DLA KONT",
     "icon": "local_offer"
-  },
-  {
-    "url": "/cv",
-    "name": "CV",
-    "icon": "account_box"
   },
   {
     "url": "",
@@ -20,23 +15,23 @@
     "icon": "style",
     "subItems": [
       {
-        "url": "/payments/domestic",
+        "url": "payments/domestic",
         "name": "Przelew krajowy"
       },
       {
-        "url": "/payments/foreign",
+        "url": "payments/foreign",
         "name": "Przelew zagraniczny"
       },
       {
-        "url": "/payments/zus",
+        "url": "payments/zus",
         "name": "Przelew ZUS"
       },
       {
-        "url": "/payments/tax",
+        "url": "payments/tax",
         "name": "Przelew podatkowy"
       },
       {
-        "url": "/payments/defined",
+        "url": "payments/defined",
         "name": "Zlecenia stałe"
       }
     ]
@@ -44,25 +39,25 @@
   {
     "url": "",
     "name": "Kredyty",
-    "icon": "style",
+    "icon": "account_balance",
     "subItems": [
       {
-        "url": "/credits/personal",
+        "url": "loans/personal",
         "name": "Kredyt konsumencki"
       },
       {
-        "url": "/credits/business",
+        "url": "loans/business",
         "name": "Kredyt firmowy"
       }
     ]
   },
   {
-    "url": "/about",
+    "url": "about/information",
     "name": "O BANKU",
     "icon": "speaker_notes"
   },
   {
-    "url": "/contact",
+    "url": "contact/clientPost",
     "name": "KONTAKT",
     "icon": "contacts"
   }

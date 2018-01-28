@@ -1,6 +1,5 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
-
 import {AppComponent} from './app.component';
 import {SharedModule} from './shared/shared.module';
 import {CommonModule} from '@angular/common';
@@ -9,6 +8,9 @@ import {HttpModule} from '@angular/http';
 import {RouterModule} from '@angular/router';
 import {LayoutModule} from './layout/layout.module';
 import {HomeModule} from './home/home.module';
+/*import {MenuComponent} from './layout/menu/menu.component';*/
+import {AboutModule} from './about/about.module';
+import {ContactModule} from './contact/contact.module';
 import {HttpClientModule} from '@angular/common/http';
 import {AuthModule} from './auth/auth.module';
 import {ReactiveFormsModule} from '@angular/forms';
@@ -32,6 +34,8 @@ import {AccountsModule} from './accounts/accounts.module';
     RouterModule,
     LayoutModule,
     HomeModule,
+    AboutModule,
+    ContactModule,
     AuthModule,
     HttpClientModule,
     PaymentsModule,
@@ -45,8 +49,10 @@ import {AccountsModule} from './accounts/accounts.module';
     CommonModule,
     HttpModule,
     SharedModule,
-    LayoutModule,
     HomeModule,
+    AboutModule,
+    ContactModule,
+    LayoutModule,
     AppRoutingModule,
     PaymentsModule,
     LoansModule,
