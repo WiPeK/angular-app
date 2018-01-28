@@ -1,0 +1,26 @@
+form {
+  padding: 10px;
+  width: 90%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  h1 {
+    margin: 10px auto;
+  }
+  mat-form-field {
+    width: 100%;
+    margin: 5px 0;
+  }
+  hr {
+    width: 100%;
+    color: lightcyan;
+  }
+}
+
+mat-radio-group {
+  display: flex;
+  flex-direction: column;
+  mat-radio-button {
+    margin: 3px 0;
+  }
+}

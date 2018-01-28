@@ -5,7 +5,7 @@ import {ScheduledTransferComponent} from "./scheduled-transfer/scheduled-transfe
 
 const routes: Routes = [
   {
-    path: 'payments/domestic',
+    path: 'payments/deposits',
     component: DomesticComponent
   },
   {
