@@ -14,6 +14,10 @@ import {TokenService} from './services/token.service';
 import { SummaryComponent } from './domestic/summary/summary.component';
 import {DomesticTransferService} from './services/domestic-transfer.service';
 import { ExecutionStatusComponent } from './domestic/execution-status/execution-status.component';
+import { ScheduledTransferComponent } from './scheduled-transfer/scheduled-transfer.component';
+import {ScheduledTransferService} from "./services/scheduled-transfer.service";
+import { SpecSchTransferComponent } from './scheduled-transfer/spec-sch-transfer/spec-sch-transfer.component';
+import {PostScheduledTransferService} from "./services/sch-transfer-modify.service";
 
 @NgModule({
   imports: [
@@ -24,9 +28,10 @@ import { ExecutionStatusComponent } from './domestic/execution-status/execution-
     ReactiveFormsModule,
     SharedModule
   ],
-  declarations: [DomesticComponent, BeneficiariesDialogComponent, SelectedBeneficiariesListComponent, SummaryComponent, ExecutionStatusComponent],
-  providers: [AccountsService, BeneficiariesService, TransferTypesService, TokenService, DomesticTransferService],
+  declarations: [DomesticComponent, BeneficiariesDialogComponent, SelectedBeneficiariesListComponent, SummaryComponent, ScheduledTransferComponent, SpecSchTransferComponent],
+  providers: [AccountsService, BeneficiariesService, TransferTypesService, TokenService, DomesticTransferService, ScheduledTransferService, PostScheduledTransferService],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
-  entryComponents: [BeneficiariesDialogComponent]
+  entryComponents: [BeneficiariesDialogComponent, SpecSchTransferComponent],
+
 })
 export class PaymentsModule { }

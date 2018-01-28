@@ -1,0 +1,23 @@
+<form class="example-form" [formGroup]="form">
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="Numer Konta Nadawcy" formControlName="beneficaryIBan">
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="Kwota przelewu" formControlName="balance">
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width" >
+    <input matInput placeholder="Status" formControlName="state">
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput [matDatepicker]="picker1" placeholder="Wybór daty przelewu" formControlName="date">
+    <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+    <mat-datepicker #picker1></mat-datepicker>
+  </mat-form-field>
+
+</form>
+
+<button class="create-bonus-btn" (click)="modifyTransfer()" mat-raised-button >Modyfikuj</button>
+<button class="create-bonus-btn" (click)="deleteTransfer()" mat-raised-button >Usuń przelew</button>

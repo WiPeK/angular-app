@@ -38,6 +38,10 @@
       {
         "url": "/payments/defined",
         "name": "Zlecenia stałe"
+      },
+      {
+        "url": "/payments/scheduled-transfer",
+        "name": "przelew zaplanowany"
       }
     ]
   },
