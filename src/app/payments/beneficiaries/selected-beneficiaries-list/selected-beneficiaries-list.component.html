@@ -1,8 +1,8 @@
 <mat-list>
   <h3 mat-subheader>Wybrani odbiorcy</h3>
   <mat-list-item *ngFor="let beneficiary of beneficiaries">
-    <h4 mat-line>{{beneficiary.domesticBeneficiary.accountNumber}}</h4>
-    <p mat-line> {{beneficiary.domesticBeneficiary.name}}</p>
-    <p mat-line>{{beneficiary.domesticBeneficiary.address}}</p>
+    <h4 mat-line>{{beneficiary.accountNumber}}</h4>
+    <p mat-line> {{beneficiary.name}}</p>
+    <p mat-line>{{beneficiary.address}}</p>
   </mat-list-item>
 </mat-list>

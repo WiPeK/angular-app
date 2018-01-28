@@ -15,6 +15,7 @@ import {TokenService} from '../services/token.service';
 import {tokenValidator} from '../../shared/validators/token.validator';
 import {DomesticTransferService} from '../services/domestic-transfer.service';
 import {DomesticTransfer} from '../../shared/models/domestic-transfer.model';
+import {TransferResponse} from '../../shared/models/transfer-response.model';
 
 @Component({
   selector: 'app-domestic',
@@ -24,6 +25,7 @@ import {DomesticTransfer} from '../../shared/models/domestic-transfer.model';
 export class DomesticComponent {
   accounts$: Observable<Account[]>;
   paymentTypes$: Observable<any[]>;
+  transferResponse: any;
 
   form: FormGroup;
   tokenForm: FormGroup;
@@ -71,6 +73,7 @@ export class DomesticComponent {
 
   submitFirstStep() {
     this.firstStepSubmited = true;
+    this._whenOneBeneficiaryConvertToArray();
     this._generateToken();
   }
 
@@ -80,19 +83,32 @@ export class DomesticComponent {
 
   tryExecuteTransfer() {
     this.secondStepSubmited = true;
-    this._whenOneBeneficiaryConvertToArray();
+    // this._whenOneBeneficiaryConvertToArray();
     let formValue: DomesticTransfer = this.form.value;
     formValue = this._convertJson(formValue);
+    console.log(formValue);
     const transferExecutionResult = this.domesticTransferService.tryExecuteTransfer(this.storeService.user.id, formValue);
     transferExecutionResult.subscribe(data => {
       this.waitForTransferExecutionResult = false;
       console.log(data);
+      this.transferResponse = data;
     })
   }
 
   private _convertJson(formValue: DomesticTransfer): DomesticTransfer {
-    const account = formValue.userAccount;
-    formValue.userAccount = account;
+    formValue.beneficiary = this.form.controls.beneficiary.value.map(i => {
+      console.log(i);
+      i = {
+        id: i.id,
+        name: i.name,
+        accountNumber: i.accountNumber,
+        address: i.address
+      };
+      return i;
+    });
+    formValue.userAccount = {
+      id: formValue.userAccount.id
+    };
     delete formValue.beneficiaryAccount;
     delete formValue.address;
     return formValue;
@@ -100,15 +116,17 @@ export class DomesticComponent {
 
   private _whenOneBeneficiaryConvertToArray() {
     if (this.noBeneficiariesSelected) {
+      console.log(this.form.value);
       const beneficiary: DomesticBeneficiary = {
         name: this.form.controls.beneficiary.value,
         address: this.form.controls.address.value,
         accountNumber: this.form.controls.beneficiaryAccount.value
       };
 
-      this.form.controls.beneficiary.setValue([{
-        domesticBeneficiary: beneficiary
-      }]);
+      this.form.controls.beneficiary.setValue([
+        beneficiary
+      ]);
+      console.log(this.form.value);
     }
   }
 

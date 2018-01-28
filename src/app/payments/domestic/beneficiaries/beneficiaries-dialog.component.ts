@@ -32,6 +32,7 @@ export class BeneficiariesDialogComponent implements OnInit {
     this.beneficiaries$ = this.beneficiariesService.getAllDomesticBeneficiaries(this.storeService.user.id);
     this.beneficiaries$
       .subscribe((beneficiaries: DomesticBeneficiary[]) => {
+        console.log(beneficiaries);
         this.dataSource = new MatTableDataSource<any>(beneficiaries);
         this.dataSource.paginator = this.paginator;
         this.dataSource.sort = this.sort;

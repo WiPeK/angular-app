@@ -22,19 +22,19 @@
       <!--account number column-->
       <ng-container matColumnDef="accountNumber">
         <mat-header-cell *matHeaderCellDef mat-sort-header>Numer konta</mat-header-cell>
-        <mat-cell *matCellDef="let element"> {{element.domesticBeneficiary.accountNumber}} </mat-cell>
+        <mat-cell *matCellDef="let element"> {{element.accountNumber}} </mat-cell>
       </ng-container>
 
       <!-- beneficiary name Column -->
       <ng-container matColumnDef="name">
         <mat-header-cell *matHeaderCellDef mat-sort-header>Dane</mat-header-cell>
-        <mat-cell *matCellDef="let element"> {{element.domesticBeneficiary.name}} </mat-cell>
+        <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
       </ng-container>
 
       <!-- Address Column -->
       <ng-container matColumnDef="address">
         <mat-header-cell *matHeaderCellDef mat-sort-header>Adres</mat-header-cell>
-        <mat-cell *matCellDef="let element"> {{element?.domesticBeneficiary?.address}} </mat-cell>
+        <mat-cell *matCellDef="let element"> {{element?.address}} </mat-cell>
       </ng-container>
 
       <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>

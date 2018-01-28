@@ -2,6 +2,7 @@ import {Account} from './account.model';
 import {DomesticBeneficiary} from './domestic-beneficiary.model';
 
 export interface DomesticTransfer {
+  id?: string;
   userAccount?: Account;
   beneficiary?: DomesticBeneficiary[];
   beneficiaryAccount?: string;
